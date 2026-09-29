@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://edideaur.works/sitemap-index.xml

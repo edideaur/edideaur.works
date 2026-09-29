@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="HOME" active="/" description="developer & systems engineer. open-source software, music, self-hosting.">
+
+
+    <section class="hero front-stage front-stage-1 h-card">
+        <div class="hero-avatar-container">
+            <img class="hero-avatar u-photo" src="/avatar.jpg" alt="edideaur" width="180" height="180">
+        </div>
+        <br>
+        <h1 class="hero-name p-name">edideaur</h1>
+        <p class="hero-tagline p-job-title">Full-Stack Developer &amp; Systems Engineer</p>
+        <a class="u-url u-uid" href="https://edideaur.works" hidden>edideaur.works</a>
+        <p class="hero-links">
+            <a class="u-url" href="https://github.com/edideaur" target="_blank" rel="me noopener noreferrer">GitHub</a> &middot;
+            <a class="u-email" href="mailto:edi@edideaur.works" rel="me">Email</a> &middot;
+            <a class="u-url" href="https://www.instagram.com/edideaur" target="_blank" rel="me noopener noreferrer">Instagram</a> &middot;
+            <a class="u-url" href="https://twitter.com/edideaur" target="_blank" rel="me noopener noreferrer">Twitter</a> &middot;
+            <a class="u-url" href="https://discordapp.com/users/1390577902336217138" target="_blank" rel="me noopener noreferrer">Discord</a>
+        </p>
+    </section>
+
+    <section class="post front-stage front-stage-2">
+        <div class="title">ABOUT</div>
+        <div class="entry prose">
+            <p>I build and ship production software. Open-source projects with real users, web apps, APIs, and infrastructure. Recent work includes <a href="https://monochrome.tf/" target="_blank" rel="noopener noreferrer">Monochrome</a>, a music app, and <a href="https://artistgrid.cx/" target="_blank" rel="noopener noreferrer">ArtistGrid</a>, an unreleased music site.</p>
+            <p>I'm currently <strong>available for freelance, commission, and contract work</strong>. Web apps, APIs, developer tooling, self-hosting setups, and system administration. If you have an app/website idea, I will build it. <a href="/socials">Contact me.</a></p>
+            <p>I am a huge music person. My favorite artists include SpaceGhostPurrp, Xavier Wulf, Chris Travis, Lil B and A$AP Rocky.</p>
+        </div>
+    </section>
+
+    <div class="split-grid front-stage front-stage-3">
+        <section class="post">
+            <div class="title">NOW PLAYING</div>
+            <div class="entry">
+                <div id="now-playing" class="skeleton" aria-live="polite">
+                    <div class="player-art-container">
+                        <img id="np-art" class="player-art" alt="Album Art" crossorigin="anonymous">
+                    </div>
+                    <a id="np-track" class="player-track fade-text" href="#" target="_blank" rel="noopener noreferrer">Loading...</a>
+                    <a id="np-artist" class="player-artist fade-text" href="#" target="_blank" rel="noopener noreferrer"></a>
+                    <a id="np-album" class="player-album fade-text" href="#" target="_blank" rel="noopener noreferrer"></a>
+                    <div class="player-bottom">
+                        <span id="np-time" class="player-time fade-text">Fetching...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="post">
+            <div class="title">CHAT</div>
+            <div class="entry">
+                <div id="chat-messages" class="chat-messages"></div>
+                <form id="chat-form" class="chat-form">
+                    <input id="chat-name" type="text" placeholder="Name" maxlength="100" autocomplete="off">
+                    <textarea id="chat-message" placeholder="Message" maxlength="1000"></textarea>
+                    <input id="chat-contact" type="text" placeholder="Contact (optional)" autocomplete="off">
+                    <input id="chat-avatar" type="text" placeholder="Avatar URL (optional)" autocomplete="off">
+                    <button type="submit"><span style="display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:10px;height:10px;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>SEND</span></button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <section class="post front-stage front-stage-4">
+        <div class="title">EXPLORE</div>
+        <div class="entry">
+            <div class="explore-grid">
+                <a href="/projects" class="explore-card">
+                    <span class="explore-name">PROJECTS</span>
+                    <span class="explore-desc">Things I've built and released.</span>
+                </a>
+                <a href="/links" class="explore-card">
+                    <span class="explore-name">LINKS</span>
+                    <span class="explore-desc">My favorite tools, sites and resources.</span>
+                </a>
+                <a href="/blog/" class="explore-card">
+                    <span class="explore-name">BLOG</span>
+                    <span class="explore-desc">Occasional writing and guides.</span>
+                </a>
+                <a href="/socials" class="explore-card">
+                    <span class="explore-name">SOCIALS</span>
+                    <span class="explore-desc">Where else to find me.</span>
+                </a>
+                <a href="/donate" class="explore-card">
+                    <span class="explore-name">DONATE</span>
+                    <span class="explore-desc">Support the work via Ko-fi or crypto.</span>
+                </a>
+                <a href="/misc" class="explore-card">
+                    <span class="explore-name">MISC</span>
+                    <span class="explore-desc">Guides, configs, and software keys.</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</Base>

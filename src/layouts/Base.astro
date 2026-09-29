@@ -1,0 +1,170 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
+import { Seo } from 'astro-seo-meta';
+import { Schema } from 'astro-seo-schema';
+import MorphIcon from 'morphicons/astro';
+import { Moon } from 'lucide';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  active?: string;
+  type?: 'website' | 'article';
+  card?: 'summary' | 'summary_large_image';
+}
+
+const SITE = 'https://edideaur.works';
+const { title, description = 'i do cool shit', ogImage = `${SITE}/avatar.jpg`, active = '', type = 'website', card } = Astro.props;
+const isHome = !title || title === 'HOME';
+const cleanTitle = title === title.toUpperCase() && title !== '404' ? title.toLowerCase() : title;
+const fullTitle = isHome ? 'edideaur.works' : `${cleanTitle} · edideaur.works`;
+const canonical = `${SITE}${Astro.url.pathname}`;
+const hasCustomBanner = ogImage !== `${SITE}/avatar.jpg`;
+const cardType = card ?? (hasCustomBanner ? 'summary_large_image' : 'summary');
+const isDefaultAvatar = ogImage === `${SITE}/avatar.jpg`;
+const ogImageType = ogImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
+const ogImageWidth = isDefaultAvatar ? '660' : '1200';
+const ogImageHeight = isDefaultAvatar ? '660' : '630';
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'edideaur.works',
+  url: SITE,
+  description: 'i do cool shit',
+  inLanguage: 'en',
+};
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'edideaur',
+  alternateName: 'edi',
+  url: SITE,
+  image: `${SITE}/avatar.jpg`,
+  jobTitle: 'Full-Stack Developer & Systems Engineer',
+  description: 'i do cool shit',
+  email: 'mailto:edi@edideaur.works',
+  sameAs: [
+    'https://github.com/edideaur',
+    'https://www.instagram.com/edideaur',
+    'https://twitter.com/edideaur',
+    'https://www.last.fm/user/edideaur',
+    'https://discordapp.com/users/1390577902336217138',
+  ],
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Seo
+        title={fullTitle}
+        description={description}
+        icon="/avatar.png?v=3"
+        themeColor="#a855f7"
+        colorScheme="dark light"
+        facebook={{
+            image: ogImage,
+            url: canonical,
+            type: type,
+        }}
+        twitter={{
+            image: ogImage,
+            site: '@edideaur',
+            card: cardType,
+        }}
+    />
+    <link rel="canonical" href={canonical}>
+    <meta property="og:image:secure_url" content={ogImage}>
+    <meta property="og:image:type" content={ogImageType}>
+    <meta property="og:image:width" content={ogImageWidth}>
+    <meta property="og:image:height" content={ogImageHeight}>
+    <meta property="og:image:alt" content={cleanTitle}>
+    <meta name="author" content="edideaur">
+    <meta property="og:site_name" content="edideaur.works">
+    <meta property="og:locale" content="en_US">
+
+    <Schema item={websiteLd} />
+    <Schema item={personLd} />
+
+    <link rel="dns-prefetch" href="https://ws.audioscrobbler.com">
+    <link rel="dns-prefetch" href="https://plausible.canine.tools">
+    <link rel="preconnect" href="https://ws.audioscrobbler.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.fonts.coollabs.io" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fonts.coollabs.io/css2?family=IBM+Plex+Sans:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/avatar.png?v=3">
+    <script defer data-domain="edideaur.works" src="https://plausible.canine.tools/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js" is:inline></script>
+    <script is:inline>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script is:inline src="/js/vanilla-tilt.min.js"></script>
+    <ClientRouter />
+    <script is:inline>
+        (function () {
+            function applyTheme(doc) {
+                try {
+                    var t = localStorage.getItem('theme');
+                    if (t === 'light' || t === 'dark') {
+                        doc.documentElement.dataset.theme = t;
+                        var m = doc.querySelector('meta[name="theme-color"]');
+                        if (m) m.setAttribute('content', t === 'light' ? '#ffffff' : '#0a0a0a');
+                    }
+                } catch (e) {}
+            }
+            applyTheme(document);
+            document.addEventListener('astro:before-swap', function (ev) {
+                applyTheme(ev.newDocument);
+            });
+        })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="xanga-header" transition:persist="header">
+            <div><strong>edideaur.works</strong></div>
+            <div id="music-bar" class="music-bar" style="display:none;">
+                <button id="mb-prev" class="mb-btn" type="button" aria-label="Previous track">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4"/><line x1="5" y1="4" x2="5" y2="20"/></svg>
+                </button>
+                <div id="mb-art-wrap" class="mb-art-wrap" role="button" tabindex="0" aria-label="Play / Pause">
+                    <img id="mb-art-curr" class="mb-art mb-art-curr" alt="">
+                    <img id="mb-art-next" class="mb-art mb-art-next" alt="">
+                </div>
+                <button id="mb-next" class="mb-btn" type="button" aria-label="Next track">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20"/><line x1="19" y1="4" x2="19" y2="20"/></svg>
+                </button>
+            </div>
+            <div class="xanga-header-right">
+                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+                    <MorphIcon id="theme-morph" icon={Moon} size={14} strokeWidth={2} spring="snappy" />
+                </button>
+                <span class="visitor-badge">
+                    <span id="visitor-count" aria-live="polite">VISITORS: <span class="loading-blink">...</span></span>
+                </span>
+            </div>
+        </header>
+
+        <Nav active={active} />
+
+        <div class="flex">
+            <main class="right">
+                <slot />
+            </main>
+        </div>
+
+        <Footer />
+    </div>
+
+    <script>
+        import '../scripts/client';
+    </script>
+</body>
+</html>

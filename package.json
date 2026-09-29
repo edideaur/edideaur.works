@@ -1,0 +1,33 @@
+{
+  "name": "edideaur-dot-works",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 3000",
+    "dev:tunnel": "bun run scripts/dev.ts",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.0",
+    "@sentry/astro": "^11.0.0",
+    "@yeskunall/astro-umami": "^0.0.9",
+    "astro": "^5.0.0",
+    "astro-minify-html-swc": "^0.1.12",
+    "astro-purgecss": "5",
+    "astro-seo-meta": "5",
+    "astro-seo-schema": "5",
+    "lucide": "^1.48.0",
+    "lucide-astro": "^0.556.0",
+    "morphicons": "^1.7.1",
+    "purgecss": "^8.0.0",
+    "simple-icons": "^16.32.0",
+    "sonda": "^0.14.0"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.0.0",
+    "schema-dts": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}

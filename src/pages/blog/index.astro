@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+    .map((p, i) => ({
+        slug: p.slug,
+        title: p.data.title,
+        date: p.data.date,
+        excerpt: p.data.excerpt || '',
+        image: p.data.image || `https://picsum.photos/seed/${p.slug}/800/500`,
+        seed: i,
+    }));
+
+function fmt(d: any) {
+    const date = d instanceof Date ? d : new Date(d + 'T00:00:00');
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<Base title="BLOG" active="/blog/" description="occasional write-ups on audio codecs, image formats, and tech.">
+    <div style="margin-bottom: 1rem; font-size: 11px; color: var(--fg-dim);">
+        Subscribe: <a href="/blog/atom.xml">Atom</a> | <a href="/blog/rss.xml">RSS</a> | <a href="/blog/feed.json">JSON</a>
+    </div>
+    <div class="blog-grid">
+        {posts.map((p) => (
+            <a href={`/blog/${p.slug}/`} class="blog-card">
+                <img src={p.image} alt="" width="800" height="500" loading="lazy">
+                <div class="blog-card-body">
+                    <div class="blog-card-title">{p.title}</div>
+                    <div class="blog-card-meta">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        {fmt(p.date)}
+                    </div>
+                </div>
+            </a>
+        ))}
+    </div>
+</Base>

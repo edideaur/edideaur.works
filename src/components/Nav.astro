@@ -1,0 +1,21 @@
+---
+interface Props {
+  active?: string;
+}
+const { active = '' } = Astro.props;
+const links = [
+  { href: '/', label: 'HOME' },
+  { href: '/links', label: 'LINKS' },
+  { href: '/projects', label: 'PROJECTS' },
+  { href: '/blog/', label: 'BLOG' },
+  { href: '/donate', label: 'DONATE' },
+  { href: '/socials', label: 'SOCIALS' },
+  { href: '/misc', label: 'MISC' },
+];
+---
+
+<nav class="xanga-nav" aria-label="Page navigation">
+    {links.map((l) => (
+        <a href={l.href} class={active === l.href ? 'active' : ''}>{l.label}</a>
+    ))}
+</nav>

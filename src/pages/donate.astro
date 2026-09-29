@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import MorphIcon from 'morphicons/astro';
+import { Copy } from 'lucide';
+
+const wallets = [
+    { name: 'Monero (XMR)', label: 'Monero (XMR)', address: '84QSJs6sq1GSS6f3HFL1Yc6QK3f73867aQduTnaxGdcvXTkpnduaU16f98akdwRo6HdPYfoNwn1GJijc3iLfGXhd5MLcfsk' },
+    { name: 'Bitcoin - Active', label: 'Bitcoin (Active)', address: 'bc1qzl0kznz3xxdpmz2m77qe3mx8ds06tcvm7pk2t4' },
+    { name: 'Bitcoin - P2WPKH', label: 'Bitcoin (P2WPKH)', address: 'bc1qf7elcxp394a7ly5pgqg0wsetzkkqn2xrlzpeh2' },
+    { name: 'Bitcoin - P2PKH', label: 'Bitcoin (P2PKH)', address: '1NnLbNBH8RcTfbfEpZyf1iW1ezXv3XBAQR' },
+    { name: 'Bitcoin - P2SH', label: 'Bitcoin (P2SH)', address: '3J3YpbRZtX7exyt962s5zbC9PMGQhZ4B7j' },
+    { name: 'Bitcoin - P2TR (Taproot)', label: 'Bitcoin (P2TR)', address: 'bc1p87xf6f8tnsnlt0tjkj9suysyq72kxz4a8fprgynggxk6p9mcr3wq5rhd43' },
+    { name: 'Bitcoin - P2WSH', label: 'Bitcoin (P2WSH)', address: 'bc1q6luyymmww83d260925g6cvy8qjy4y4djg40cgqjcqszs9upes3xsy9nt6m' },
+    { name: 'Bitcoin - Silent Payments', label: 'Bitcoin (Silent Payments)', address: 'sp1qq0wnt8ehzg9hes4kyc23s5h4mc0gcr69fp6clm4m5yjuc78v0as4xq5j3wz03v9jw4yslcmue7xy7ek80sm3lnw8eq7ce9tkjfs3d0rj3yhj6lw6' },
+    { name: 'Bitcoin - Lightning', label: 'Bitcoin Lightning', address: 'oblongbalinese7350@cake.cash' },
+    { name: 'Litecoin - Active', label: 'Litecoin (Active)', address: 'ltc1qt9jspfdwcgas9q4sf5q9ajn7x9ka8mfywsehrr' },
+    { name: 'Litecoin - P2WPKH', label: 'Litecoin (P2WPKH)', address: 'ltc1qqtsdhlae2rm67avrw7eal57j77845lz5kvz6qj' },
+    { name: 'Litecoin - MWEB', label: 'Litecoin (MWEB)', address: 'ltcmweb1qq06pgdyw2xlwy64vhz3l903kmp84j0qgx9nu7er8ckr6tp2289r9sqe9ntqyzyd2usf298ln5cvpfc7wccsys320ajr5sx8hfy43eut74c2jae4c' },
+    { name: 'Ethereum / EVM - ETH - BNB - Polygon - Base - Arbitrum', label: 'EVM address', address: '0x078A47E9bbe2e0D7aEb2B2B09302ceB2af964593' },
+    { name: 'Solana (SOL)', label: 'Solana (SOL)', address: '2zdNcs4Uu2377Nzjc8P91qH7hHiyQs8E1f27A6icUSKx' },
+    { name: 'Zcash (ZEC)', label: 'Zcash (ZEC)', address: 'u120zcwxlt9azs36d07uafdnj7fzsa62stwuk4f2eruk272e8he0czxvyjquakhp968mvm0tuzmqx6ln7c5k3qdw2qem2ypk4p6s3hgczx' },
+    { name: 'Tron (TRX)', label: 'Tron (TRX)', address: 'TQU2kovh58VnnPr1PUjZUhNY2a3UfM4ERh' },
+    { name: 'Dogecoin (DOGE)', label: 'Dogecoin (DOGE)', address: 'DNpErVMo3yPM6UFAStSfWuBbHPvUwx95D9' },
+    { name: 'Bitcoin Cash (BCH)', label: 'Bitcoin Cash (BCH)', address: 'bitcoincash:qzg8j4ddjew3ptcr9g503qk0345kdr332s5jmrzeym' },
+    { name: 'Nano (XNO)', label: 'Nano (XNO)', address: 'nano_1qfmbi1b9tzocx9socbffy7z6te6r7z75byc7ofpfpqjpbfb1i3eaqe3etjz' },
+];
+---
+
+<Base title="DONATE" active="/donate" description="tip jar for open-source work. monero, bitcoin, or ko-fi.">
+    <section class="post">
+        <div class="title">DONATE</div>
+        <div class="entry">
+            <p style="color: var(--fg-muted); margin-bottom: 1rem; line-height: 1.7;">
+                If you enjoy my work and want to support what I do, consider sending a tip. Every donation helps me keep my projects running and continue building free, open tools.
+            </p>
+
+            <p style="margin-bottom: 0.5rem;"><a href="https://ko-fi.com/edideaur" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">Ko-fi</a></p>
+
+            <div class="donate-crypto-list">
+                {wallets.map((w) => (
+                    <div class="crypto-card">
+                        <div class="crypto-row">
+                            <button type="button" class="crypto-wallet" data-label={w.label} data-address={w.address} aria-label={`Copy ${w.name} address`}>
+                                <span class="crypto-wallet-meta">
+                                    <span class="crypto-wallet-name">{w.name}</span>
+                                    <span class="crypto-wallet-addr">{w.address}</span>
+                                </span>
+                                <span class="crypto-wallet-feedback" aria-hidden="true">
+                                    <MorphIcon class="crypto-copy-icon" icon={Copy} size={13} strokeWidth={2} spring="snappy" />
+                                    <span class="crypto-copy-text">Copy</span>
+                                </span>
+                            </button>
+                            <button type="button" class="crypto-qr-btn" data-address={w.address} data-name={w.name} aria-label={`Show QR code for ${w.name}`} aria-expanded="false" title="Show QR Code">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="3" height="3"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="crypto-qr-drawer" aria-hidden="true">
+                            <div class="crypto-qr-drawer-inner">
+                                <div class="crypto-qr-content">
+                                    <div class="crypto-qr-badge">
+                                        <div class="crypto-qr-canvas-holder"></div>
+                                    </div>
+                                    <div class="crypto-qr-details">
+                                        <div class="crypto-qr-coin">{w.name}</div>
+                                        <div class="crypto-qr-addr-display">{w.address}</div>
+                                        <button type="button" class="crypto-qr-copy-btn" data-address={w.address}>
+                                            <MorphIcon class="crypto-qr-copy-icon" icon={Copy} size={12} strokeWidth={2} spring="snappy" />
+                                            <span>Copy Address</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+</Base>

@@ -1,0 +1,71 @@
+---
+const badges = [
+  { href: 'https://monochrome.tf', label: 'Monochrome, free Tidal music streamer', src: '/buttons/monochrome.png', height: '31', alt: 'Free Music Streaming' },
+  { href: 'https://fmhy.net/', label: 'FMHY, free media wiki', src: '/buttons/fmhy88x31.png', height: '31', alt: 'Free Shit' },
+  { href: 'https://www.headphonesty.com/2024/12/spotify-ceo-becomes-richer-musician-history/', label: 'Headphonesty, article on Spotify\u2019s CEO', src: '/buttons/shitify.gif', height: '31', alt: 'Shitify' },
+  { href: 'https://wiki.archlinux.org/', label: 'Arch Linux', src: '/buttons/archlinux.png', height: '31', alt: 'Arch Linux' },
+  { href: 'https://lucida.to/', label: 'Lucida, streaming downloader', src: '/buttons/lucida.png', height: '31', alt: 'lucida.to' },
+  { href: 'https://github.com/dani-garcia/vaultwarden', label: 'Vaultwarden', src: '/buttons/bitwarden.png', height: '31', alt: 'Vaultwarden' },
+  { href: 'https://browsers.avoidthehack.com/', label: 'Avoid the Hack, browser privacy', src: '/buttons/chrome.gif', height: '31', alt: 'Anti-Chrome' },
+  { href: 'https://sad.ovh', label: 'sad.ovh binkies', src: '/buttons/sadovh.png', height: '31', alt: 'sad.ovh' },
+  { href: 'https://www.orwell.org/', label: 'Orwell.org, Chrome is evil', src: '/buttons/chromeevil.gif', height: '31', alt: 'Chrome is Evil' },
+  { href: 'https://thefire.org/', label: 'The Fire, free speech', src: '/buttons/freespeech.gif', height: '31', alt: 'Free speech' },
+  { href: 'https://grapheneos.org/', label: 'GrapheneOS', src: '/buttons/grapheneos.png', height: '31', alt: 'GrapheneOS' },
+  { href: 'https://www.home-assistant.io/', label: 'Home Assistant', src: '/buttons/home-assistant.png', height: '31', alt: 'Home Assistant' },
+  { href: 'https://hacks.guide/', label: 'Homebrew guide', src: '/buttons/homebrew.png', height: '31', alt: 'Homebrew guide' },
+  { href: 'https://archive.org/', label: 'Internet Archive', src: '/buttons/internetarchive.gif', height: '31', alt: 'Internet Archive' },
+  { href: 'https://fmhy.net/privacy', label: 'FMHY, privacy', src: '/buttons/internetprivacy.gif', height: '31', alt: 'Privacy' },
+  { href: 'https://libreboot.org/', label: 'Libreboot', src: '/buttons/libreboot.png', height: '31', alt: 'Libreboot' },
+  { href: 'https://www.getmonero.org/', label: 'Monero', src: '/buttons/monero-now.png', height: '31', alt: 'Monero' },
+  { href: 'https://en.wikipedia.org/wiki/Parental_Advisory', label: 'Parental Advisory', src: '/buttons/parentaladvisory.png', height: '31', alt: 'Parental Advisory' },
+  { href: 'https://fmhy.net/', label: 'FMHY, free media wiki', src: '/buttons/piracy.png', height: '31', alt: 'Piracy' },
+  { href: 'https://repair.eu/', label: 'Right to Repair', src: '/buttons/right2repair.png', height: '31', alt: 'Right to Repair' },
+  { href: 'https://nicotine-plus.org/', label: 'Soulseek', src: '/buttons/soulseek.png', height: '31', alt: 'Soulseek' },
+  { href: 'https://ublockorigin.com/', label: 'uBlock Origin', src: '/buttons/ublock.png', height: '31', alt: 'uBlock' },
+  { href: 'https://wikipedia.org/', label: 'Wikipedia', src: '/buttons/wikipedia.png', height: '31', alt: 'Wiki' },
+  { href: 'https://en.wikipedia.org/wiki/Amen_break', label: 'Amen Break', src: '/buttons/amen.png', height: '31', alt: 'Amen Break' },
+  { href: 'https://greens-efa.eu/', label: 'Greens/EFA', src: '/buttons/green.png', height: '31', alt: 'Green' },
+  { href: 'https://europarl.europa.eu/', label: 'European Parliament', src: '/buttons/eu.png', height: '31', alt: 'EU' },
+  { href: 'https://rust-lang.org/', label: 'Rust', src: '/buttons/rust.png', height: '31', alt: 'Rust' },
+  { href: 'https://jw.org/', label: 'Jehovah\u2019s Witnesses', src: '/buttons/b-false.gif', height: '31', alt: 'Jehovah\'s Witnesses' },
+  { href: 'https://servo.org/', label: 'Servo', src: '/buttons/servo_dark.png', height: '31', alt: 'Servo' },
+  { href: 'https://imgur.com/', label: 'Imgur', src: '/buttons/imgur.png', height: '31', alt: 'Imgur' },
+  { href: 'https://developers.google.com/speed/webp', label: 'WebP', src: '/buttons/webp.png', height: '31', alt: 'WebP' },
+  { href: 'https://aomediacodec.github.io/av1-avif/', label: 'AVIF', src: '/buttons/avif.png', height: '31', alt: 'AVIF' },
+  { href: 'https://www.eff.org/deeplinks/2020/02/reevaluating-dmca-22-years-later-lets-think-users', label: 'EFF, ZMC', src: '/buttons/dmca.png', height: '31', alt: 'Fuck the DMCA' },
+  { href: 'https://www.eff.org/deeplinks/2020/02/reevaluating-dmca-22-years-later-lets-think-users', label: 'EFF, DMCA', src: '/buttons/ZMC.png', height: '31', alt: 'Fuck the ZMC' },
+  { href: 'https://en.wikipedia.org/wiki/Recording_Industry_Association_of_America#GitHub_and_youtube-dl_takedown_request', label: 'Fuck the RIAA', src: '/buttons/riaa.png', height: '31', alt: 'Fuck the RIAA' },
+  { href: 'https://eff.org/', label: 'EFF', src: '/buttons/eff.png', height: '31', alt: 'EFF' },
+  { href: 'https://drumkits.site', label: 'Drumkits.site', src: '/buttons/drumkits-site.gif', height: '31', alt: 'drumkits.site' },
+  { href: 'https://digdeeper.rodeo/', label: 'Digdeeper', src: '/buttons/diggy.png', height: '31', alt: 'digdeeperp' },
+  { href: 'https://nulawreview.org/extralegalrecent/2025/11/23/thou-shalt-not-steal-unless-its-only-a-little-the-art-of-sampling-in-music', label: 'Sampling is not stealing', src: '/buttons/samplingisnotstealing.png', height: '31', alt: 'Sampling is not stealing' },
+  { href: 'https://rutracker.net/forum/index.php', label: 'FL Studio', src: '/buttons/flstudio.png', height: '31', alt: 'FL Studio' },
+];
+---
+
+<footer class="xanga-footer" transition:persist="footer">
+    <div class="h-card" hidden>
+        <a class="p-name u-url u-uid" rel="me" href="https://edideaur.works">edideaur</a>
+        <span class="p-nickname">edi</span>
+        <img class="u-photo" src="https://edideaur.works/avatar.jpg" alt="edideaur">
+        <span class="p-job-title">Full-Stack Developer &amp; Systems Engineer</span>
+        <span class="p-note">i do cool shit</span>
+        <a class="u-email" rel="me" href="mailto:edi@edideaur.works">edi@edideaur.works</a>
+        <a class="u-url" rel="me" href="https://github.com/edideaur">GitHub</a>
+        <a class="u-url" rel="me" href="https://twitter.com/edideaur">Twitter</a>
+        <a class="u-url" rel="me" href="https://www.instagram.com/edideaur">Instagram</a>
+        <a class="u-url" rel="me" href="https://www.last.fm/user/edideaur">Last.fm</a>
+        <a class="u-url" rel="me" href="https://discordapp.com/users/1390577902336217138">Discord</a>
+        <img class="u-logo" src="https://edideaur.works/button/880x310.png" alt="edideaur banner">
+    </div>
+
+    <div class="badge-grid">
+        {badges.map((b, idx) => (
+            <a aria-label={b.label} href={b.href} target="_blank" rel="noopener noreferrer" style={`--i: ${idx};`}>
+                <img src={b.src} width="88" height={b.height || '31'} alt={b.alt} loading="lazy" decoding="async">
+            </a>
+        ))}
+    </div>
+    <br>
+    <p><span style="display:inline-flex;align-items:center;gap:2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><circle cx="12" cy="12" r="10"/><path d="M15 9.354a4 4 0 1 0 0 5.292"/></svg>COPYLEFT EDIDEAUR.WORKS 2026 | NO RIGHTS RESERVED</span></p>
+</footer>

@@ -1,0 +1,266 @@
+---
+import Base from '../layouts/Base.astro';
+
+const projects = [
+    {
+        name: 'ARTISTGRID.CX',
+        url: 'https://artistgrid.cx/',
+        source: 'https://github.com/artistgrid/artistgrid',
+        desc: 'Site for unreleased music',
+        tags: ['React', 'TypeScript', 'Tailwind', 'Vite'],
+    },
+    {
+        name: 'MONOCHROME.TF',
+        url: 'https://monochrome.tf/',
+        source: 'https://github.com/monochrome-music/monochrome',
+        desc: 'Free, open-source, lossless music streaming app',
+        tags: ['TypeScript', 'Tidal API', 'Vite'],
+    },
+    {
+        name: 'M3U',
+        url: '',
+        source: 'https://github.com/edideaur/tv',
+        desc: 'M3U IPTV playlist with over 50,000 individual channels. Updated regularly with working streams from around the world',
+        tags: ['Python', 'M3U'],
+    },
+    {
+        name: 'EDIDEAUR.WORKS',
+        url: 'https://edideaur.works',
+        source: 'https://github.com/edideaur/edideaur.works',
+        desc: 'This website',
+        tags: ['Astro', 'TypeScript', 'CSS'],
+    },
+    {
+        name: 'AOTY-API',
+        url: 'https://aoty.edideaur.works',
+        source: 'https://github.com/edideaur/aoty-api',
+        desc: 'Scraper API for Album Of The Year',
+        tags: ['TypeScript', 'Cloudflare Workers'],
+    },
+    {
+        name: 'DISCORD URL REFRESHER',
+        url: 'https://discord-urls.edideaur.works/',
+        source: 'https://github.com/edideaur/refresh-discord-url',
+        desc: 'Tool to refresh expired Discord CDN URLs',
+        tags: ['React', 'TypeScript', 'Vite'],
+    },
+    {
+        name: 'AXINSTAGRAM',
+        url: 'https://axinstagram.com',
+        source: 'https://github.com/edideaur/axinstagram',
+        desc: 'Instagram download tool and reel/post embedder',
+        tags: ['TypeScript', 'Cloudflare Workers'],
+    },
+    {
+        name: 'UNTITLED-DL',
+        url: 'https://untitled-dl.pages.dev/',
+        source: 'https://github.com/edideaur/untitled-dl',
+        desc: 'Download projects in full quality from [untitled]',
+        tags: ['React', 'Vite', 'TypeScript'],
+    },
+    {
+        name: 'FREEBRID',
+        url: 'https://debird.edideaur.works',
+        source: 'https://github.com/edideaur/freebrid',
+        desc: 'Proxy downloads from real-debird so many users can share one subscription',
+        tags: ['TypeScript', 'React', 'Vite'],
+    },
+    {
+        name: 'NYT GAMES',
+        url: 'https://nyt-games.edideaur.works',
+        source: 'https://github.com/edideaur/nyt-games',
+        desc: 'Shows the answers for every New York Times game on a per-day basis',
+        tags: ['TypeScript', 'React', 'Vite'],
+    },
+    {
+        name: 'KOFI WEBHOOK WORKER',
+        url: 'https://github.com/edideaur/kofi-webhook-worker',
+        source: 'https://github.com/edideaur/kofi-webhook-worker',
+        desc: 'Forwards Ko-Fi donation alerts to a Discord channel',
+        tags: ['TypeScript', 'Cloudflare Workers'],
+    },
+    {
+        name: 'TRACKERDL',
+        url: 'https://github.com/ArtistGrid/trackerdl',
+        source: 'https://github.com/ArtistGrid/trackerdl',
+        desc: 'Terminal-based downloader for music trackers',
+        tags: ['Rust', 'Ratatui'],
+    },
+    {
+        name: 'COUNT',
+        url: 'https://github.com/edideaur/count',
+        source: 'https://github.com/edideaur/count',
+        desc: 'Web counter service',
+        tags: ['Go'],
+    },
+    {
+        name: 'SONGLINK-CORS-PROXY',
+        url: 'https://github.com/edideaur/songlink-cors-proxy',
+        source: 'https://github.com/edideaur/songlink-cors-proxy',
+        desc: 'CORS proxy microservice for Songlink / Odesli',
+        tags: ['Rust'],
+    },
+    {
+        name: 'KANYE QUEST 3030 WEB',
+        url: 'https://github.com/edideaur/kanyequest3030-web',
+        source: 'https://github.com/edideaur/kanyequest3030-web',
+        desc: 'Web port of Kanye Quest 3030',
+        tags: ['JavaScript', 'HTML5'],
+    },
+    {
+        name: 'BESZEL-PROXY',
+        url: 'https://github.com/edideaur/beszel-proxy',
+        source: 'https://github.com/edideaur/beszel-proxy',
+        desc: 'Proxy service exposing beszel data without auth1',
+        tags: ['Python'],
+    },
+    {
+        name: 'WEBRING',
+        url: 'https://github.com/edideaur/webring',
+        source: 'https://github.com/edideaur/webring',
+        desc: 'Self-hosted webring service',
+        tags: ['Go'],
+    },
+    {
+        name: 'CHATBOX',
+        url: 'https://github.com/edideaur/chatbox',
+        source: 'https://github.com/edideaur/chatbox',
+        desc: 'Real-time chatbox backend service',
+        tags: ['Go'],
+    },
+    {
+        name: 'DRUMKITS-WEBSITE',
+        url: 'https://github.com/edideaur/drumkits-website',
+        source: 'https://github.com/edideaur/drumkits-website',
+        desc: 'Drumkits.site scrape site',
+        tags: ['TypeScript'],
+    },
+    {
+        name: 'SHEETPROXY',
+        url: 'https://github.com/edideaur/sheetproxy',
+        source: 'https://github.com/edideaur/sheetproxy',
+        desc: 'Proxy for google sheets',
+        tags: ['Go'],
+    },
+    {
+        name: 'PILLOWS-UPLOAD',
+        url: 'https://github.com/edideaur/pillows-upload',
+        source: 'https://github.com/edideaur/pillows-upload',
+        desc: 'CLI tool for uploading files to pillows.su and imgur.gg',
+        tags: ['Python'],
+    },
+];
+
+const contributions = [
+    {
+        name: 'RUSTRAK/RUSTRAK',
+        url: 'https://github.com/rustrak/rustrak',
+        source: 'https://github.com/rustrak/rustrak/',
+        statusText: '[SOURCE]',
+        desc: 'Self-hosted error tracking and observability server. Contributed Romanian, French, and Spanish translations alongside other features and localization checks',
+        tags: ['Rust', 'TypeScript', 'React', 'i18n'],
+    },
+    {
+        name: 'GENERICNESS/CHAT',
+        url: 'https://chat.4x.rip',
+        source: 'https://github.com/genericness/chat/pull/1',
+        statusText: '[PR #1]',
+        desc: 'A chat application. Contributed a fix for the OpenCode zen mode (pull request #1)',
+        tags: ['Vite', 'React', 'TypeScript'],
+    },
+    {
+        name: 'ATVALERIE/MONODOWNLOAD',
+        url: 'https://github.com/atvalerie/monodownload',
+        source: 'https://github.com/atvalerie/monodownload',
+        statusText: '[SOURCE]',
+        desc: 'Bun migration',
+        tags: ['TypeScript', 'Bun'],
+    },
+    {
+        name: 'DRUMKITS.SITE',
+        url: 'https://drumkits.site/',
+        source: 'https://drumkits.site',
+        statusText: '[CLOSED-SOURCE]',
+        desc: 'Worked on frontend and database',
+        tags: ['HTML', 'PHP'],
+    },
+    {
+        name: 'WEB-SCROBBLER',
+        url: 'https://github.com/web-scrobbler/web-scrobbler',
+        source: 'https://github.com/web-scrobbler/web-scrobbler',
+        statusText: '[SOURCE]',
+        desc: 'Added unrlsd.app and CN connectors',
+        tags: ['Vite', 'TypeScript'],
+    },
+    {
+        name: 'DAVIDARROYO1234/INSTAGRAMUNFOLLOWERS',
+        url: 'https://github.com/davidarroyo1234/InstagramUnfollowers',
+        source: 'https://github.com/davidarroyo1234/InstagramUnfollowers',
+        statusText: '[SOURCE]',
+        desc: 'Added bookmarklet',
+        tags: ['TypeScript'],
+    },
+];
+---
+
+<Base title="PROJECTS" active="/projects" description="stuff i've built: monochrome, unreleased music trackers, web tools, and apis.">
+    <section class="post">
+        <div class="title">PROJECTS</div>
+        <div class="entry">
+            {projects.map((p) => (
+                <div class="project-card">
+                    <div class="card-header">
+                        {p.url ? (
+                            <a href={p.url} target="_blank" rel="noopener noreferrer">{p.name}</a>
+                        ) : (
+                            <a>{p.name}</a>
+                        )}
+                        {p.source && (
+                            <a href={p.source} target="_blank" rel="noopener noreferrer" class="project-status">[SOURCE]</a>
+                        )}
+                    </div>
+                    <div class="card-body">
+                        <p class="project-desc">{p.desc}</p>
+                        <div style="margin-top: 0.75rem;">
+                            {p.tags.map((t) => (
+                                <span class="blog-tag">{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <div class="title" style="margin-top: 2rem;">CONTRIBUTED TO</div>
+        <div class="entry">
+            {contributions.map((c) => (
+                <div class="project-card">
+                    <div class="card-header">
+                        <a href={c.url} target="_blank" rel="noopener noreferrer">{c.name}</a>
+                        {c.source ? (
+                            <a href={c.source} target="_blank" rel="noopener noreferrer" class="project-status">{c.statusText}</a>
+                        ) : (
+                            <span class="project-status">{c.statusText}</span>
+                        )}
+                    </div>
+                    <div class="card-body">
+                        <p class="project-desc">{c.desc}</p>
+                        <div style="margin-top: 0.75rem;">
+                            {c.tags.map((t) => (
+                                <span class="blog-tag">{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+</Base>
+
+<style>
+    .card-header a,
+    .card-header a:hover {
+        text-decoration: none !important;
+        border-bottom: none !important;
+    }
+</style>
